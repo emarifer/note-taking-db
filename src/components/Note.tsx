@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import { Row, Col, Stack, Button, Badge } from "react-bootstrap";
 import { deleteNote } from "../backend";
-import { successAlert, errorAlert } from "../helpers";
+import { successAlert, errorAlert, getDateFromTimestamp } from "../helpers";
 
 export function Note(): ReactElement {
   const note = useNote();
@@ -65,6 +65,10 @@ export function Note(): ReactElement {
       </Row>
 
       <ReactMarkdown rehypePlugins={[rehypeRaw]}>{note.markdown}</ReactMarkdown>
+
+      <small className="mt-4 text-muted fst-italic">
+        {getDateFromTimestamp(note.timestamp!)}
+      </small>
     </>
   );
 }

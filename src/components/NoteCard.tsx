@@ -1,10 +1,16 @@
 import { ReactElement } from "react";
 import { Badge, Card, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { getDateFromTimestamp } from "../helpers";
 import { SimpliedNote } from "../types/types";
 import styles from "./NoteCard.module.css";
 
-export function NoteCard({ id, tags, title }: SimpliedNote): ReactElement {
+export function NoteCard({
+  id,
+  tags,
+  title,
+  timestamp,
+}: SimpliedNote): ReactElement {
   return (
     <Card
       as={Link}
@@ -32,6 +38,9 @@ export function NoteCard({ id, tags, title }: SimpliedNote): ReactElement {
           )}
         </Stack>
       </Card.Body>
+      <Card.Footer className="text-muted fst-italic text-end small">
+        {getDateFromTimestamp(timestamp)}
+      </Card.Footer>
     </Card>
   );
 }

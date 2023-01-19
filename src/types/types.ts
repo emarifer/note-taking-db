@@ -29,6 +29,7 @@ export type SimpliedNote = {
   tags: Tag[];
   title: string;
   id: string;
+  timestamp: number;
 };
 
 export type notesFromBackend = {
