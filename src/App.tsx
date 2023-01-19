@@ -71,4 +71,5 @@ export default App;
  * [dependencies.rusqlite]
    version = "0.28.0"
    features = ["bundled"]
+ *
  */
