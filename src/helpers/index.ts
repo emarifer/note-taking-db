@@ -47,4 +47,39 @@ const errorAlert = (error: Error) =>
     confirmButtonText: "Ok",
   });
 
-export { queryTag, queryNote, convertNotes, successAlert, errorAlert };
+const getDateFromTimestamp = (timestamp: number) => {
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const date = new Date(timestamp);
+  const splitString = date.toString().split(" ");
+  const year = splitString[3];
+  const month = months.findIndex((it) => it === splitString[1]) + 1;
+  const monthString = month < 10 ? `0${month}` : `${month}`;
+  const day = splitString[2];
+  const hourAndMinute = splitString[4].split(":").slice(0, 2);
+  const hourAndMinuteString = hourAndMinute.join(":");
+
+  return `🕒 ${day}-${monthString}-${year} • ${hourAndMinuteString}`;
+};
+
+export {
+  queryTag,
+  queryNote,
+  convertNotes,
+  successAlert,
+  errorAlert,
+  getDateFromTimestamp,
+};
